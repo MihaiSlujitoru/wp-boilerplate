@@ -26,21 +26,21 @@ i,em { 	font-style:italic; 	}
 h1,h2,h3,h4,h5,h6 {
 	color:$brand-color;
 	padding-bottom: 30px;
-	@include breakpoint(768px){
+	@include breakpoint(768px) {
 		padding-bottom:40px;
 	}//breakpoint(768px)
 }//h1,h2,h3,h4,h5,h6
 
 h1 {	
 	@include fontsize(1.75,2.15);
-	@include breakpoint(768px){
+	@include breakpoint(768px) {
 		@include fontsize(2.5,2.9);
 	}//breakpoint(768px)
 }//h1
 
 h2 {
 	@include fontsize(1.5,1.9);
-	@include breakpoint(768px){
+	@include breakpoint(768px) {
 		@include fontsize(2,2.4);
 	}//breakpoint(768px)
 }//h2
@@ -59,13 +59,13 @@ h4 {
 h5 {
 
 	@include fontsize(1,1.4);
-	@include breakpoint(768px){
+	@include breakpoint(768px) {
 		@include fontsize(1.25,1.65);
 	}//breakpoint(768px)
 }//h5
 h6 {
 	@include fontsize(0.875,1.275);
-	@include breakpoint(768px){
+	@include breakpoint(768px) {
 		@include fontsize(1.125,1.525);
 	}//breakpoint(768px)
 }//h6
@@ -74,7 +74,7 @@ p {
 	color:$mine-shaft;
 	@include fontsize(1,1.5);
 	padding-bottom: 30px;
-	@include breakpoint(768px){
+	@include breakpoint(768px) {
 		padding-bottom: 40px;
 		@include fontsize(1.25,2);
 	}//breakpoint(768px)
@@ -86,10 +86,7 @@ p {
 a{
 	color:$brand-color;
 	text-decoration:none;
-	-webkit-transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	-o-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;	
+	@include transition();
 	&:hover{
 		color:$mine-shaft;
 		text-decoration: underline;
@@ -118,17 +115,15 @@ a{
 	font-weight:900;
 	width: 100%;
 
-	-webkit-transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	-o-transition: all 0.2s ease-in-out;
-	transition: all 0.2s ease-in-out;	
+	@include transition();
+
 
 	background-color: $brand-color;
 	&:hover{
 		background-color:$shark 
 	}//hover	
 
-	@include breakpoint(768px){
+	@include breakpoint(768px) {
 		max-width:320px;
 	}//breakpoint(768px)
 	&:hover{
@@ -146,7 +141,7 @@ a{
 
 ul,ol {
 	padding-bottom: 30px;
-	@include breakpoint(768px){
+	@include breakpoint(768px) {
 		padding-bottom:40px;
 	}//breakpoint(768px)
 	li {

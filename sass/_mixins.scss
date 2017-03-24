@@ -1,22 +1,31 @@
 @mixin fontsize($size:16, $line: $size * 16){
-      font-size:    $size  + px;
-      line-height: $line + px;
-      font-size:   ($size / 16) + rem;
-      line-height: ($line / 16) + rem;
+	font-size:    $size  + px;
+	line-height: $line + px;
+	font-size:   ($size / 16) + rem;
+	line-height: ($line / 16) + rem;
 }
 
 @mixin openSans($style: normal, $weight: normal){
-      font-family: 'Open Sans', sans-serif;
-      font-weight: $weight;
-      font-style: $style;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: $weight;
+	font-style: $style;
 }
 
+
+@mixin transition($type: all, $time: 0.2s, $property: ease-in-out ) {
+	-webkit-transition: $type $time $property;
+	-moz-transition: $type $time $property;
+	-o-transition: $type $time $property;
+	transition: $type $time $property;        
+}
+
+
 @mixin clearfix {
-      &:after {
-            content: "";
-            display: table;
-            clear: both;
-      }
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
 }
 
 

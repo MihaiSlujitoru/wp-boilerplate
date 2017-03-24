@@ -14,6 +14,11 @@ add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
 add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
 remove_action('wp_head', 'wp_generator');
 
+/**
+ * Template Functions
+ */
+require get_template_directory() . '/inc/template-functions.php';
+
 // Add default posts and comments RSS feed links to head.
 add_theme_support( 'automatic-feed-links' );
 /*
@@ -45,6 +50,17 @@ array(
 	'social_nav' => 'Social Menu'
 ));
 }
+
+/*ADD SUPPORT FOR THUMBNAILS*/
+add_theme_support( 'post-thumbnails' );
+the_post_thumbnail( 'thumbnail' );     // Thumbnail (150 x 150 hard cropped)
+the_post_thumbnail( 'medium' );        // Medium resolution (300 x 300 max height 300px)
+the_post_thumbnail( 'medium_large' );  // Medium Large (added in WP 4.4) resolution (768 x 0 infinite height)
+the_post_thumbnail( 'large' );         // Large resolution (1024 x 1024 max height 1024px)
+the_post_thumbnail( 'full' );          // Full resolution (original size uploaded)
+
+//add_image_size( 'blog-thumb', 600, 300, true, array('center','center') ); //(cropped)
+//add_image_size( 'slider-thumb', 100, 100, array('center','center') ); 
 
 
 function excerpt($limit) {
