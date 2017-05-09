@@ -1,0 +1,117 @@
+<!DOCTYPE html> 
+<html >
+<head> 
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</head>
+<body>
+
+	<div id="content" class="site-content">
+		<div id="banner" class="site-banner">
+			<div class="wrap">
+				<div class="row">
+					<div class="col s12 m5 l4  col-logo">
+						<img src="img/varsity-club-logo.png" alt="Varsity Club Logo">
+					</div><!--col-->
+					<div class="col s12 m7 l8 col-content">
+						<h1 class="banner-title">The Varsity Club</h1>
+						<p class="banner-content">The Varsity Club is your new, members only destination to a never-ending supply of (spirit) rewards! Exclusive for current Varsity Spirit Coach and Gym Owner customers*. </p>
+					</div>
+				</div><!--row-->
+			</div><!--wrap-->
+		</div><!--site-banner-->
+		<div id="primary" class="content-area">
+			<div class="wrap">
+				<main id="main" class="site-main" role="main">
+					<div class="row row-decision">
+						<div class="col s12 m6">
+							<a href="#" class="btn btn-center btn-blue">Login <img src="img/arrow-right.png" alt="Arrow Right"></a>
+						</div><!--col-->
+						<div class="col s12 m6">
+							<a href="#" class="btn btn-center btn-blue">Join Today <img src="img/arrow-right.png" alt="Arrow Right"></a>
+						</div><!--col-->
+					</div><!--row-->
+
+					<div class="row row-boxes">
+						<div class="col s12 m6 ">
+							<div class="box matchHeight">
+								<div class="box-title">
+									<p>Benefits</p>
+								</div><!--box-->
+								<div class="box-content">
+									<ul class="benefits">
+										<li class="active icon-check">Welcome Gift</li>
+										<li class="active icon-check">Exclusive Flash Sales Access</li>
+										<li class="inactive icon-check-inactive">First to Know</li>
+										<li class="inactive icon-check-inactive">Seasonal Savings</li>
+										<li class="inactive icon-check-inactive">Varsity University Pass</li>
+										<li class="inactive icon-check-inactive">Club member only passes  </li>
+									</ul>
+								</div><!--box-content-->								
+							</div><!--box-->
+						</div><!--col-->
+						<div class="col s12 m6">
+							<div class="box matchHeight">
+								<div class="box-title">
+									<p>Here’s the Routine</p>
+								</div>
+								<div class="box-content">
+									<ul class="steps">
+										<li class="icon-phone">Step 1: Sign up:  Varsity.com/TheClub</li>
+										<li class="icon-bag">Step 2: Shop: The Varsity  Club Flash Sales Site  offers a monthly selection  of  heavily discounted  products just for you,  the tireless coach! </li>
+										<li class="icon-mail">Step 3: Keep an eye on your inbox for information about new Varsity Club perks and benefits</li>
+										<li class="icon-heart">Step 4: Cheer for joy (and dance your heart out)! </li>
+									</ul>
+								</div><!--box-content-->							
+							</div><!--box-->
+						</div><!--col-->
+					</div><!--row-->
+				</main><!-- #main -->				
+			</div><!--wrap-->
+		</div><!-- #primary -->
+	</div><!-- #content -->    
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+
+<script>
+
+
+
+/*****************************
+Check the width of the screen
+******************************/
+(function(n){n.viewportSize={},n.viewportSize.getHeight=function(){return t("Height")},n.viewportSize.getWidth=function(){return t("Width")};var t=function(t){var f,o=t.toLowerCase(),e=n.document,i=e.documentElement,r,u;return n["inner"+t]===undefined?f=i["client"+t]:n["inner"+t]!=i["client"+t]?(r=e.createElement("body"),r.id="vpw-test-b",r.style.cssText="overflow:scroll",u=e.createElement("div"),u.id="vpw-test-d",u.style.cssText="position:absolute;top:-1000px",u.innerHTML="<style>@media("+o+":"+i["client"+t]+"px){body#vpw-test-b div#vpw-test-d{"+o+":7px!important}}<\/style>",r.appendChild(u),i.insertBefore(r,e.head),f=u["offset"+t]==7?i["client"+t]:n["inner"+t],i.removeChild(r)):f=n["inner"+t],f}})(this);
+
+var w = (function() {
+	windowWidth = viewportSize.getWidth();
+});
+
+$(document).ready(w);
+$(window).resize(w);
+
+/*****************************
+Match Height
+******************************/
+
+$(window).on("load resize",function(){
+	if (windowWidth < 768)  {
+		$(".matchHeight").matchHeight("remove: true");
+
+	} else {
+		$(".matchHeight").matchHeight(   {property: 'height'}  );
+	}
+});
+
+</script>
+</body>
+</html>
