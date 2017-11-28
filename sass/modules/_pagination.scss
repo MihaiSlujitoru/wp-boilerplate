@@ -1,0 +1,79 @@
+.pagination {
+	clear:both;
+	position:relative;
+
+	.fullPagination,
+	.smallPagination,
+	.singlePagination{
+		border-top: 1px solid $gray;
+		padding: 20px 0;
+		@include breakpoint(768px){
+			padding: 45px 0;
+		}//breakpoint(768px)
+		@include breakpoint(1024px){
+			padding: 65px 0;
+		}//breakpoint(1024px)			
+	}
+
+
+	.fullPagination{
+		display: none;
+		@include breakpoint(1024px){
+			display: block;
+		}//breakpoint(1024px)
+	}//paginationLong
+	.smallPagination {
+		@include breakpoint(1024px){
+			display: none;
+		}//breakpoint(1024px)
+	}//paginatinShort
+
+	span,
+	a.inactive {
+		display: block;
+		float: left;
+		margin:0 15px 0 0;
+		padding: 14px 0;
+		text-decoration: none;
+		color:$brand-color;
+		font-weight: 900;
+		@include fontsize(1.125,1.4);
+	}
+
+	a.inactive:hover{
+		color:$accent-color;
+		text-decoration: underline;
+	}//hover
+
+	span.current{
+		color:$elephant;
+	}//curent
+
+	.btn-prev{
+		margin:0 auto 13px;
+		@include breakpoint(768px){
+			margin: 0;
+			float: left;
+			max-width: 45%;
+		}//breakpoint(768px)
+		@include breakpoint(1024px){
+			max-width: 300px;
+			margin-right: 30px;			
+		}//breakpoint(1024px)		
+	}//btn-left
+
+	.btn-next{
+		margin:0 auto;
+		@include breakpoint(768px){
+			margin:0;
+			float: right;
+			max-width: 45%;
+		}//breakpoint(768px)
+		@include breakpoint(1024px){
+			max-width: 300px;
+			margin-left: 30px;			
+		}//breakpoint(1024px)
+	}//btn-right
+
+}//pagination
+
