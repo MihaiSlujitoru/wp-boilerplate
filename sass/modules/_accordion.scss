@@ -1,0 +1,30 @@
+.wrap-accordion-container {
+	
+	.accordion-container {
+		display: block;
+		position: relative;
+		
+		// Style accordion container here
+
+		.accordion-header {
+			//Style accordion Header here
+
+			display: block;
+
+			cursor: pointer;
+			
+			//Incase you want to add Icons
+			// background-repeat: no-repeat;
+			// background-position: left center;
+			// background-image: url('../img/icons/fib-plus-icon.png');
+			// &.is-active {
+			// 	background-image: url('../img/icons/fib-minus-icon.png');
+			// }//is-active
+		}//accordion-header
+
+		.accordion-content {
+			display: none;
+		}//accordion-content
+
+	}//.accordion-container
+}//wrap-accordion-container

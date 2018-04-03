@@ -1,0 +1,235 @@
+/********************
+	Img
+*********************/
+
+.img-responsive {
+	max-width: 100%;
+	height: auto;
+}
+
+/********************
+	Paddings
+*********************/
+
+.padding-top-bottom {
+	padding-top: 25px;
+	padding-bottom: 25px;
+	@include breakpoint($sm) {
+		padding-top: 45px;
+		padding-bottom: 45px;		
+	}//breakpoint($sm)
+}
+
+.padding-top {
+	padding-top: 25px;
+	@include breakpoint($sm) {
+		padding-top: 45px;
+	}
+}
+.padding-bottom {
+	padding-bottom: 25px;
+	@include breakpoint($sm) {
+		padding-bottom: 45px;
+	}
+}
+
+/********************
+	Margins
+*********************/
+
+.margin-top-auto {
+	margin-top: auto;
+}
+
+.margin-bottom-0 {
+	margin-bottom: 0px;
+}
+
+.margin-bottom-5 {
+	margin-bottom: 5px;
+}
+
+.margin-bottom-10 {
+	margin-bottom: 10px;
+}
+
+
+.margin-bottom-15 {
+	margin-bottom: 15px;
+}
+
+.margin-bottom-20 {
+	margin-bottom: 20px;
+}
+
+/********************
+	Colors
+*********************/
+
+.text-white,
+.text-white * {
+	color:$white;
+
+	a {
+		color:inherit;
+	}
+}
+
+
+/********************
+	Text 
+*********************/
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+.text-uppercase {text-transform: uppercase};
+.text-extra-bold { font-weight: 900; }
+.text-underline {text-decoration: underline;}
+
+/********************
+	Display
+*********************/
+.display-xs {
+	display: initial;
+	@include breakpoint($sm) {
+		display: none;
+	}//breakpoint($sm)
+}
+
+.display-sm {
+	display: none;
+	@include breakpoint($sm) {
+		display: initial;
+	}//breakpoint($sm)
+	@include breakpoint($md) {
+		display: none;
+	}//breakpoint($md)
+}
+.display-md {
+	display: none;
+	@include breakpoint($md) {
+		display: initial;
+	}//breakpoint($md)
+	@include breakpoint($lg) {
+		display: none;
+	}//breakpoint($lg)	
+}
+
+.display-lg {
+	display: none;
+	@include breakpoint($lg) {
+		display: initial;
+	}//breakpoint($lg)
+}
+
+.display-none { display: none; }
+.display-initial { display: initial }
+
+/********************
+	White Space
+*********************/
+.nowrap,
+.nowrap * {	
+	white-space: nowrap;
+}
+
+.white-space-wrap,
+.white-space-wrap * {
+	/* These are technically the same, but use both */
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+
+	-ms-word-break: break-all;
+	/* This is the dangerous one in WebKit, as it breaks things wherever */
+	word-break: break-all;
+	/* Instead use this non-standard one: */
+	word-break: break-word;
+
+	/* Adds a hyphen where the word breaks, if supported (No Blink) */
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}
+
+
+/********************
+	equal-height-content - Visual Composer
+*********************/
+
+.equal-height-content {
+	.vc_column-inner > .wpb_wrapper {
+		height: 100%;
+		display: flex;
+		div {
+			width: 100%;
+		}
+	}
+}
+
+
+
+/*****************************
+	Background
+******************************/
+.background-bottom-right-container.background-bottom-right-container {
+	background-position: right bottom!important;
+	background-size: unset!important;
+	background-repeat: no-repeat!important;
+}
+
+.background-bottom-container.background-bottom-container {
+	background-position: center bottom!important;
+	background-size: cover!important;
+	background-repeat: no-repeat!important;
+}
+
+
+.background-top-container.background-top-container {
+	background-position: center top!important;
+	background-size: cover!important;
+	background-repeat: no-repeat!important;
+}
+
+
+/*****************************
+	Overflow
+******************************/
+
+.overflow-visible { overflow: visible!important; }
+
+/*****************************
+	SWAP - Works only with 2 elements - Visual Composer
+******************************/
+
+.swap-md,
+.inverse-md {
+	>.wpb_column:nth-child(odd) {
+		@include breakpoint($md) {
+			order: 2!important;
+		}//breakpoint($md)
+	}
+
+	>.wpb_column:nth-child(even) {
+		@include breakpoint($md) {
+			order: 1!important;
+		}//breakpoint($md)
+	}
+}
+
+.swap-sm,
+.inverse-sm {
+	>.wpb_column:nth-child(odd) {
+		@include breakpoint($sm) {
+			order: 2!important;
+		}//breakpoint($sm)
+	}
+
+	>.wpb_column:nth-child(even) {
+		@include breakpoint($sm) {
+			order: 1!important;
+		}//breakpoint($sm)
+	}
+}

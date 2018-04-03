@@ -1,114 +1,55 @@
 <?php
 
-/********************
-Display Categories (Taxonomy) of Products and Resources 
-*********************/
-function renderTaxonomies($postId, $taxonomy, $title ) {
+function my_assets() {
+		
+	//wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array() );
+	//wp_enqueue_script( 'slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array( 'jquery' ), false, true );
+	//wp_enqueue_script( 'jquery-modal', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js' , array('jquery'), false, true );
 
-	$term  = wp_get_post_terms($postId , $taxonomy,	array("fields" => "names"));
-	
-	if(count($term) > 0 ) {
-		echo "<p class='wrap-product-cat'><span class='product-cat'>" . $title . "</span>";
-			foreach ($term as $term1) {
-				echo "<span class='product-name'>" . $term1 . " "; 
-				if(count($term) > 1) {
-					echo "<span class='tooltip tooltip-span' title='";
-					break;
-				} 
-			}
-			if(count($term) > 1) {
-				echo "<ul>";
-				foreach (array_slice($term, 1) as $term2) {
-					echo "<li>" . esc_attr($term2) . "</li>";
-				}
-				echo "</ul>";
-				echo " '>more...</span>";
-			}
-			if(count($term) > 0){
-				echo "</span>";
-			}
-		echo "</p>";
+	wp_enqueue_script( 'main-js', get_stylesheet_directory_uri()."/js/main.js",  array('jquery'), false, true );
+
+
+}
+add_action( 'wp_enqueue_scripts', 'my_assets' );
+
+
+/*****************
+	Easy Excerpts -> use <?php echo excerpt(25); ?> 
+******************/
+
+function excerpt($limit) {
+	$excerpt = explode(' ', get_the_excerpt(), $limit);
+	if (count($excerpt)>=$limit) {
+		array_pop($excerpt);
+		$excerpt = implode(" ",$excerpt).'...';
+	} else {
+		$excerpt = implode(" ",$excerpt);
 	}
+	$excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
+	return $excerpt;
 }
 
-function isFilteredBy($taxonomy, $slug) {
-	$qv = get_query_var($taxonomy);
-	if (!is_array($qv)) {
-		$qv = [$qv];
-	}
-	return in_array($slug, $qv);
-}
 
-function __renderTaxonomyFilter($taxonomy, $title, $terms) {
-    $qv = get_query_var($taxonomy);
-    if (!is_array($qv)) {
-        $qv = [$qv];
-    }
-    $fieldName = $taxonomy.'[]';
-    echo "<select name='$fieldName' id='$taxonomy'>";
-    echo "<option value=''>$title</option>";
-    foreach ($terms as $term) {
-        $selected = in_array($term->slug, $qv) ? 'selected' : '';
-        echo "<option $selected value='" . $term->slug .  "'>" .$term->name . "</option>";
-    }
-    echo "</select>";
-}
+/*****************
+	Add Widget Support
+******************/
 
-function renderTaxonomyFilter($taxonomy, $title) {
-	$args = array( 'taxonomy' => $taxonomy, 'hide_empty' => false );
-	$terms = get_categories($args);
-    __renderTaxonomyFilter($taxonomy, $title, $terms);
-}
+// function widgets_init() {
+//     register_sidebar( array(
+//         'name'          => 'Add Name',
+//         'id'            => 'add-id',
+//         'before_widget' => '',
+//         'after_widget'  => '',
+//         'before_title'  => '',
+//         'after_title'   => '',
+//     ));
+// }
+// add_action( 'widgets_init', 'widgets_init' );
 
-function renderNeighborTaxonomyFilter($taxonomy, $title, $filterTaxonomy, $postType) {
-    $filterQueryVars = get_query_var($filterTaxonomy);
-    if (!is_array($filterQueryVars)) {
-        $filterQueryVars = [$filterQueryVars];
-    }
+// if ( is_active_sidebar( 'add-id' ) ) : 
+// 	echo "<div class='add-class' id='add-unique-id'>";
+// 	dynamic_sidebar( 'add-id' );
+// 	echo "</div>";
+// endif;
 
-    $args = array( 'taxonomy' => $taxonomy, 'hide_empty' => false );
-    $postQueryArgs = array(
-        'post_type'=> $postType,
-        'posts_per_page' => -1,
-        'fields' => 'ids',
-        'tax_query' => array(
-            "relation" => "AND",
-            array(
-                "taxonomy" => $filterTaxonomy,
-                "field" => "slug",
-                "terms" => $filterQueryVars
-            ),
-            array(
-                "taxonomy" => $taxonomy,
-                "field" => "slug",
-                "terms" => wp_list_pluck(get_categories($args), 'slug')
-            )
-        )
-    );
 
-    $postIds = get_posts($postQueryArgs);
-
-    $terms = wp_get_object_terms($postIds, $taxonomy);
-
-    __renderTaxonomyFilter($taxonomy, $title, $terms);
-}
-
-function renderSidebarTaxonomyFilter($taxonomy, $title) {
-	$args = array( 'taxonomy' => $taxonomy );
-	$terms = get_categories($args);
-	$qv = get_query_var($taxonomy);
-	if (!is_array($qv)) {
-		$qv = [$qv];
-	}
-	$fieldName = $taxonomy.'[]';
-
-	echo "<div class='sidebar-cat'>";
-	echo "<p class='title'>$title</p>";
-	echo "<div class='wrap-filters'>";
-	foreach ($terms as $term) {
-		$selected = in_array($term->slug, $qv) ? 'checked' : '';
-		echo "<label for='$term->term_id'><input type='checkbox' name='$fieldName' value='$term->slug' $selected id='$term->term_id'>$term->name</label><br>";
-	}
-	echo "</div>";
-	echo "</div>";
-}

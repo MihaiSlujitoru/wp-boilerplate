@@ -1,0 +1,19 @@
+
+//If you don't use visual composer remove the parent class.
+.wpb_content_element {
+	blockquote {
+		//Style Blocquote
+
+
+		p {
+			font-style: inherit;
+			font-size: inherit;
+			color: inherit;
+			line-height: inherit;
+		}
+
+		cite {
+			//Style Cite
+		}//cite
+	}//blockquote
+}//wpb_content_element

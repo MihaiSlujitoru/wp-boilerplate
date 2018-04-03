@@ -1,13 +1,14 @@
 /*Add all grid options in here*/
 
-$gutter-width : 16px;
+$gutter-width : 30px;
 $num-cols : 12;
 
 .wrap {
 	margin: 0 auto;
-	max-width: 1280px;
+	max-width: 1440px;
 	width: 100%;
-	padding: 0 15px;
+	padding-left: 15px;
+	padding-right: 15px
 }
 
 .wrap .row {
@@ -15,31 +16,15 @@ $num-cols : 12;
 	margin-right: (-1 * $gutter-width / 2);
 }
 
-.section {
-	padding: 20px 0;
-	@include breakpoint(768px) {
-		padding: 40px 0;
-	}//breakpoint(768px)
-	@include breakpoint(60px) {
-		padding: 65px 0;
-	}//breakpoint(60px)
-
-	&.no-pad {
-		padding: 0;
-	}
-	&.no-pad-bot {
-		padding-bottom: 0;
-	}
-	&.no-pad-top {
-		padding-top: 0;
-	}
-}//section
-
 .row {
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 20px;
+	margin-bottom: 35px;
 	@include clearfix();
+	&.no-margin,
+	&.margin-bottom-0 {
+		margin-bottom:0;
+	}
 	.col {
 		float: left;
 		padding: 0 $gutter-width / 2;
@@ -56,7 +41,7 @@ $num-cols : 12;
 		$i: 1;
 		@while $i <= $num-cols {
 			$perc: unquote((100 / ($num-cols / $i)) + "%");
-				&.s#{$i} {
+				&.xs#{$i} {
 					width: $perc;
 					margin-left: auto;
 					left: auto;
@@ -67,23 +52,23 @@ $num-cols : 12;
 		$i: 1;
 		@while $i <= $num-cols {
 			$perc: unquote((100 / ($num-cols / $i)) + "%");
-			&.offset-s#{$i} {
+			&.offset-xs#{$i} {
 				margin-left: $perc;
 			}
-			&.pull-s#{$i} {
+			&.pull-xs#{$i} {
 				right: $perc;
 			}
-			&.push-s#{$i} {
+			&.push-xs#{$i} {
 				left: $perc;
 			}
 			$i: $i + 1;
 		}
 
-		@include breakpoint(768px) {
+		@include breakpoint($sm) {
 			$i: 1;
 			@while $i <= $num-cols {
 				$perc: unquote((100 / ($num-cols / $i)) + "%");
-					&.m#{$i} {
+					&.sm#{$i} {
 						width: $perc;
 						margin-left: auto;
 						left: auto;
@@ -95,25 +80,25 @@ $num-cols : 12;
 			$i: 1;
 			@while $i <= $num-cols {
 				$perc: unquote((100 / ($num-cols / $i)) + "%");
-					&.offset-m#{$i} {
+					&.offset-sm#{$i} {
 						margin-left: $perc;
 					}
-					&.pull-m#{$i} {
+					&.pull-sm#{$i} {
 						right: $perc;
 					}
-					&.push-m#{$i} {
+					&.push-sm#{$i} {
 						left: $perc;
 					}
 				$i: $i + 1;
 			}
-		}//breakpoint(768px)
+		}//breakpoint($sm)
 
 
-		@include breakpoint(1024px) {
+		@include breakpoint($md) {
 			$i: 1;
 			@while $i <= $num-cols {
 				$perc: unquote((100 / ($num-cols / $i)) + "%");
-				&.l#{$i} {
+				&.md#{$i} {
 					width: $perc;
 					margin-left: auto;
 					left: auto;
@@ -124,32 +109,44 @@ $num-cols : 12;
 			$i: 1;
 			@while $i <= $num-cols {
 				$perc: unquote((100 / ($num-cols / $i)) + "%");
-					&.offset-l#{$i} {
+					&.offset-md#{$i} {
 						margin-left: $perc;
 					}
-					&.pull-l#{$i} {
+					&.pull-md#{$i} {
 						right: $perc;
 					}
-					&.push-l#{$i} {
+					&.push-md#{$i} {
 						left: $perc;
 					}
 				$i: $i + 1;
 			}	
-		}//breakpoint(1024px)
+		}//breakpoint($md)
+		@include breakpoint($lg) {
+			$i: 1;
+			@while $i <= $num-cols {
+				$perc: unquote((100 / ($num-cols / $i)) + "%");
+				&.lg#{$i} {
+					width: $perc;
+					margin-left: auto;
+					left: auto;
+					right: auto;
+				}
+				$i: $i + 1;
+			}
+			$i: 1;
+			@while $i <= $num-cols {
+				$perc: unquote((100 / ($num-cols / $i)) + "%");
+					&.offset-lg#{$i} {
+						margin-left: $perc;
+					}
+					&.pull-lg#{$i} {
+						right: $perc;
+					}
+					&.push-lg#{$i} {
+						left: $perc;
+					}
+				$i: $i + 1;
+			}	
+		}//breakpoint($md)		
 	}//col
 }//row
-
-.padding {
-	padding: 20px 0;
-	@include breakpoint(768px) {
-		padding: 40px 0;
-	}//breakpoint(768px)
-	@include breakpoint(60px) {
-		padding: 65px 0;
-	}//breakpoint(60px)
-}//padding
-
-.pad-bottom-5 { padding-bottom: 5px; }
-.pad-bottom-0 { padding-bottom: 0px; }
-.margin-bottom-0 { margin-bottom: 0px; }
-.margin-top-30 { margin-top: 30px; }

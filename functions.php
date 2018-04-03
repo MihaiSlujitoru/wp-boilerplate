@@ -10,6 +10,7 @@ function _remove_script_version( $src ){
 	$parts = explode( '?', $src );
 	return $parts[0];
 }
+
 add_filter( 'script_loader_src', '_remove_script_version', 15, 1 );
 add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
 remove_action('wp_head', 'wp_generator');
@@ -17,7 +18,10 @@ remove_action('wp_head', 'wp_generator');
 /**
  * Template Functions
  */
-require get_template_directory() . '/inc/template-functions.php';
+//require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/inc/mobile-nav-walker.php';
+
+
 
 // Add default posts and comments RSS feed links to head.
 add_theme_support( 'automatic-feed-links' );
@@ -43,13 +47,22 @@ add_theme_support( 'html5', array(
 
 add_theme_support( 'menus' );
 if ( function_exists( 'register_nav_menus' ) ) {
-register_nav_menus(
-array(   
-	'main_nav' => 'Main Menu',
-	'footer_nav' => 'Footer Nav',
-	'social_nav' => 'Social Menu'
-));
+	register_nav_menus(
+		array(   
+			'master_menu' 		=> __('Master Menu'),
+			'personal_menu' 	=> __('Personal Menu'),
+			'commercial_menu' 	=> __('Commercial Menu'),
+			'about_menu'	 	=> __('About Us Menu'),
+			'social_menu'	 	=> __('Social Menu'),
+			'footer_menu_left' 	=> __('Footer Menu Left'),
+			'footer_menu_right' => __('Footer Menu Right'),
+			'error_menu' 		=> __('Error Menu')
+		)
+	);
 }
+
+//Add excertp support 
+add_post_type_support( 'page', 'excerpt' );
 
 /*ADD SUPPORT FOR THUMBNAILS*/
 add_theme_support( 'post-thumbnails' );
@@ -59,34 +72,5 @@ the_post_thumbnail( 'medium_large' );  // Medium Large (added in WP 4.4) resolut
 the_post_thumbnail( 'large' );         // Large resolution (1024 x 1024 max height 1024px)
 the_post_thumbnail( 'full' );          // Full resolution (original size uploaded)
 
-//add_image_size( 'blog-thumb', 600, 300, true, array('center','center') ); //(cropped)
-//add_image_size( 'slider-thumb', 100, 100, array('center','center') ); 
-
-
-function excerpt($limit) {
-	$excerpt = explode(' ', get_the_excerpt(), $limit);
-	if (count($excerpt)>=$limit) {
-		array_pop($excerpt);
-		$excerpt = implode(" ",$excerpt).'...';
-	} else {
-		$excerpt = implode(" ",$excerpt);
-	}
-	$excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
-	return $excerpt;
-}
-function content($limit) {
-	$content = explode(' ', get_the_content(), $limit);
-	if (count($content)>=$limit) {
-		array_pop($content);
-		$content = implode(" ",$content).'...';
-	} else {
-		$content = implode(" ",$content);
-	}
-
-	$content = preg_replace('/\[.+\]/','', $content);
-	$content = apply_filters('the_content', $content);
-	$content = str_replace(']]>', ']]&gt;', $content);
-	return $content;
-}
-/*US IT THIS WAY <?php echo excerpt(25); ?> */
-?>
+//add_image_size( '80-80-false', 80, 80 ); //
+//add_image_size( '290-220', 290, 220, array('center', 'center')); //

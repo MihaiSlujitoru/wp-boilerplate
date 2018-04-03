@@ -5,187 +5,149 @@
 }
 
 html{
-	background-color:#fff;
+	background-color:$white;
 	font-size: 100%;
 }//html
 
 body {
-	@include openSans(normal,300);	
+	@include basicSans(normal,400);	
 	@include fontsize(16,27);
 	-webkit-font-smoothing: antialiased;
-	max-width: 2000px;
-	margin:0 auto;	
 }//body
 
-.cf{ @include clearfix; }
+
+//IOS Hack.
+@media screen and (max-device-width: 480px){
+  body{
+    -webkit-text-size-adjust: none;
+  }
+}
+
+.cf { @include clearfix; }
 b,strong { 	font-weight:bold; }
 i,em { 	font-style:italic; 	}
 
 
-
-h1,h2,h3,h4,h5,h6 {
-	color:$brand-color;
-	padding-bottom: 30px;
-	@include breakpoint(768px) {
-		padding-bottom:40px;
-	}//breakpoint(768px)
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6,{
+	margin-bottom: 30px;
 }//h1,h2,h3,h4,h5,h6
 
-h1 {	
-	@include fontsize(1.75,2.15);
-	@include breakpoint(768px) {
-		@include fontsize(2.5,2.9);
-	}//breakpoint(768px)
+h1,
+.h1 {	
+	@include fontsize(24,26);
+	@include breakpoint($sm) {
+		@include fontsize(28, 30);	
+	}//breakpoint($sm)
+	@include breakpoint($md) {
+		@include fontsize(56,56);
+	}//breakpoint($md)
 }//h1
 
-h2 {
-	@include fontsize(1.5,1.9);
-	@include breakpoint(768px) {
-		@include fontsize(2,2.4);
-	}//breakpoint(768px)
+h2,
+.h2 {
+	@include fontsize(28, 30);
+	@include breakpoint($sm) {
+		@include fontsize(32, 34);
+	}//breakpoint($sm)
+	@include breakpoint($md) {
+		@include fontsize(40, 40);
+	}//breakpoint($md)	
 }//h2
-h3 {
-	@include fontsize(1.25,1.65);
-	@include breakpoint(768px){
-		@include fontsize(1.75,2.15);
-	}//breakpoint(768px)
-}//h3
-h4 {
-	@include fontsize(1.125,1.525);
-	@include breakpoint(768px){
-		@include fontsize(1.5,1.9);
-	}//breakpoint(768px)
-}//h4
-h5 {
 
-	@include fontsize(1,1.4);
-	@include breakpoint(768px) {
-		@include fontsize(1.25,1.65);
-	}//breakpoint(768px)
+h3,
+.h3 {
+	@include fontsize(24,26);
+	@include breakpoint($sm) {
+		@include fontsize(28,40);
+	}//breakpoint($sm)
+}//h3
+
+h4,
+.h4 {
+	@include fontsize(24,26);
+	@include breakpoint($sm) {
+		@include fontsize(28,40);
+	}//breakpoint($sm)
+}//h4
+
+h5,
+.h5 {
+	@include fontsize(18, 30);
 }//h5
-h6 {
-	@include fontsize(0.875,1.275);
-	@include breakpoint(768px) {
-		@include fontsize(1.125,1.525);
-	}//breakpoint(768px)
+
+h6,
+.h6 {
+	@include fontsize(18,20);
 }//h6
 
-p {
-	color:$mine-shaft;
-	@include fontsize(1,1.5);
-	padding-bottom: 30px;
-	@include breakpoint(768px) {
-		padding-bottom: 40px;
-		@include fontsize(1.25,2);
-	}//breakpoint(768px)
+p,
+.p {
+	//color: ;
+	@include fontsize(16, 24);
+	margin-bottom: 30px;
 	&:last-child{
-		padding-bottom: 0;
+		margin-bottom: 0;
 	}//last-child
+	
+	@include breakpoint($sm) {
+		@include fontsize(18, 30);
+	}//breakpoint($sm)
+
+	small {
+		@include fontsize(12, 18);
+	}
 }//p
 
+
+p.lead {
+	@include fontsize(18, 30);
+	@include breakpoint($sm) {
+		@include fontsize(24, 30);	
+	}//breakpoint($sm)
+}
+
 a{
-	color:$brand-color;
 	text-decoration:none;
 	@include transition();
 	&:hover{
-		color:$mine-shaft;
-		text-decoration: underline;
+
 	}//hover
 }//a
 
 
-//Buttons
-
-.btn{
-	color:$white;
-	text-decoration:none;
-	text-align:center;
-	text-transform:uppercase;
-	@include fontsize(1,3.5);
-	-webkit-appearance: none;
-	-moz-appearance:    none;
-	appearance:         none;
-	border:0;
-	padding:0;
-	margin:0;
-	border-radius:4px;
-	display: block;
-	cursor:pointer;
-	height:56px;
-	font-weight:900;
-	width: 100%;
-
-	@include transition();
-
-
-	background-color: $brand-color;
-	&:hover{
-		background-color:$shark 
-	}//hover	
-
-	@include breakpoint(768px) {
-		max-width:320px;
-	}//breakpoint(768px)
-	&:hover{
-		color:$white;
-		text-decoration: none;
-	}//hover
-
-	&.btn-center{
-		margin: 0 auto;
-	}//btn-center
-}//btn
-
 
 //UL, OL lists
+//In case you use Visual Composer otherwise take those classes out to be global.
+.wpb_content_element,
+.single-post-content {
+	ul,
+	ol {
+		margin-left: 18px;
+		padding-bottom: 30px;
+		li {
+			//color: ;
+			@include fontsize(16, 24);
+			
+			margin-bottom: 30px;
+		    padding-left: 20px;
+		    position: relative;		
 
-ul,ol {
-	padding-bottom: 30px;
-	@include breakpoint(768px) {
-		padding-bottom:40px;
-	}//breakpoint(768px)
-	li {
-		@include fontsize(1,1.25);
-		margin-bottom: 10px;
-		@include breakpoint(768px){
-			@include fontsize(1.25,1.75);
-		}//breakpoint(768px)		
-	}//li
-}//ul,ol
-
-ul {
-	list-style:disc;
-	margin-left: 21px;
-	li  {
-		color:$emperor;
-	}//li
-}//ul
-
-ol {
-	list-style:decimal;
-	margin-left: 30px;	
-	li {
-		//padding-left: 25px;
-		color:$emperor;
-		font-weight: 900;
-		span{
-			font-weight: 300;
-			color:$emperor;
-		}//span
-	}//li
-}//ol
+			&:last-child{
+				margin-bottom: 0;
+			}//last-child	
+		}//li
+	}//ul,ol
+}
 
 blockquote {
-	padding-left: 40px;
-	border-left: 5px solid $brand-color;	
-	@include fontsize(1,1.25);
+	@include fontsize(16, 24);
 	margin-bottom: 30px;
 	font-style: italic;
-	@include breakpoint(768px){
-		margin-bottom: 40px;
-		@include fontsize(1.25,1.75);
-	}//breakpoint(768px)	
-}
+	@include breakpoint($md) {
+		@include fontsize(18, 30);
+	}//breakpoint($md)
+}//blockquote
 
 
 //
@@ -196,89 +158,108 @@ input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="url"],
+input[type="password"],
 textarea{
+	-webkit-appearance: none;
+	-moz-appearance:    none;
+	appearance:         none;	
 	width:100%;
-	border:1px solid $brand-color;
+	border:0;
 	border-radius:4px;
 	background:$white;
 	margin-bottom: 14px;
-	@include openSans(300,normal);
+	@include basicSans(italic, 400);
+	//color: ;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="tel"],
+input[type="password"],
 input[type="url"]  {
-	height:46px;
-	padding:0 18px;
-	@include fontsize(1,2.875);
+	height:40px;
+	padding:0 16px;
+	@include fontsize(16,32);
 }
 
 textarea{
-	height:166px;
-	padding: 15px 20px;
-	@include fontsize(1,1.5);
-	color:$emperor;
+	height:200px;
+	padding: 16px;
+	@include fontsize(16,30);
+	//color: ;
 }
 
 ::-webkit-input-placeholder {
-   color: $emperor;
+   //color: ;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: $emperor;  
+   //color: ;  
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: $emperor;  
+   //color: ;  
 }
 
 :-ms-input-placeholder {  
-   color: $emperor;  
+   //color: ;  
 }
 
 /*******************************/
 /* Make videos responsive */
 /*******************************/
 
-.videoWrapper {
+.iframe {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
 	padding-top: 25px;
 	height: 0;
 
 	margin-bottom: 30px;
-	@include breakpoint(768px){
-		margin-bottom: 40px;
-	}//breakpoint(768px)	
-}//videoWrapper
-.videoWrapper object,
-.videoWrapper embed,
-.videoWrapper iframe  {
+
+	object,
+	embed,
+	iframe  {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}	
+}//.iframe
+
+
+
+/*******************************/
+/* Text Reader */
+/*******************************/
+
+.visually-hidden {
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  	top: -1000em;
 }
 
-
-//CONTACT FORM 7
-
-.wpcf7-not-valid {
-	border:2px solid $accent-color!important;
+#skip-to-content {
+	visibility: hidden;
+	width: 0;
+	height: 0;
 }
 
-.wpcf7-not-valid-tip {
-	margin:-15px 0 0px 20px;
-	color:$white!important;
+/*******************************/
+/* SUB/SUP */
+/*******************************/
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 
-.ajax-loader {
-	position: absolute;
-	left: 0;
+sup {
+  top: -0.5em;
 }
 
-.wpcf7-response-output {
-	display: none!important;
+sub {
+  bottom: -0.25em;
 }
