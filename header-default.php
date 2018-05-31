@@ -9,7 +9,7 @@
 		</div>
 
 		<nav id="site-navigation-desktop" class="desktop-nav" role="navigation">
-				<?php wp_nav_menu( array( 'theme_location' => 'master_menu', 'container'=> '', 'menu_id' => 'master-menu'  ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'master_menu', 'container'=> '', 'menu_id' => 'master-menu'  ) ); ?>
 		</nav>
     </div><!--lower-menu-->
 </header>
