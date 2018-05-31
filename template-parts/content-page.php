@@ -16,11 +16,6 @@
 	<div class="entry-content">
 		<?php
 			the_content();
-
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'dian_fossey' ),
-				'after'  => '</div>',
-			) );
 		?>
 	</div><!-- .entry-content -->
 
@@ -30,7 +25,7 @@
 				edit_post_link(
 					sprintf(
 						/* translators: %s: Name of current post */
-						esc_html__( 'Edit %s', 'dian_fossey' ),
+						esc_html__( 'Edit %s' ),
 						the_title( '<span class="screen-reader-text">"', '"</span>', false )
 					),
 					'<span class="edit-link">',

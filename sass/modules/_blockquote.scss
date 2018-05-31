@@ -17,3 +17,12 @@
 		}//cite
 	}//blockquote
 }//wpb_content_element
+
+// blockquote {
+// 	@include fontsize(16, 24);
+// 	margin-bottom: 30px;
+// 	font-style: italic;
+// 	@include breakpoint($md) {
+// 		@include fontsize(18, 30);
+// 	}//breakpoint($md)
+// }//blockquote

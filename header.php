@@ -6,10 +6,6 @@
 <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1">
 <meta name="format-detection" content="telephone=no">
 
-<link rel="stylesheet" href="https://use.typekit.net/wwv1pwm.css">
-
-<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri();?>/css/style.css" />
-<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" />
 
 <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri() ?>/favicon.ico" type="image/x-icon">
 <link rel="icon" href="<?php echo get_stylesheet_directory_uri() ?>/favicon.ico" type="image/x-icon">

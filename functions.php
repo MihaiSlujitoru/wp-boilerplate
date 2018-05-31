@@ -18,8 +18,8 @@ remove_action('wp_head', 'wp_generator');
 /**
  * Template Functions
  */
-//require get_template_directory() . '/inc/template-functions.php';
-require get_template_directory() . '/inc/mobile-nav-walker.php';
+require get_template_directory() . '/inc/template-functions.php';
+//require get_template_directory() . '/inc/main-menu-walker.php';
 
 
 
@@ -50,13 +50,7 @@ if ( function_exists( 'register_nav_menus' ) ) {
 	register_nav_menus(
 		array(   
 			'master_menu' 		=> __('Master Menu'),
-			'personal_menu' 	=> __('Personal Menu'),
-			'commercial_menu' 	=> __('Commercial Menu'),
-			'about_menu'	 	=> __('About Us Menu'),
 			'social_menu'	 	=> __('Social Menu'),
-			'footer_menu_left' 	=> __('Footer Menu Left'),
-			'footer_menu_right' => __('Footer Menu Right'),
-			'error_menu' 		=> __('Error Menu')
 		)
 	);
 }
