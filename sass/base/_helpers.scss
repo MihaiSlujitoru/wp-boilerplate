@@ -88,44 +88,69 @@
 .text-extra-bold { font-weight: 900; }
 .text-underline {text-decoration: underline;}
 
-/********************
-	Display
-*********************/
-.display-xs {
-	display: initial;
-	@include breakpoint($sm) {
-		display: none;
-	}//breakpoint($sm)
-}
+/*********************
+  Media Query Classes
+**********************/
 
-.display-sm {
-	display: none;
+.show-sm-and-up {
 	@include breakpoint($sm) {
-		display: initial;
+		display: block!important;
 	}//breakpoint($sm)
-	@include breakpoint($md) {
-		display: none;
-	}//breakpoint($md)
-}
-.display-md {
-	display: none;
-	@include breakpoint($md) {
-		display: initial;
-	}//breakpoint($md)
-	@include breakpoint($lg) {
-		display: none;
-	}//breakpoint($lg)	
-}
+}//show-sm-and-up
 
-.display-lg {
-	display: none;
+.show-md-and-up {
+	@include breakpoint($md) {
+		display: block!important;
+	}//breakpoint($md)
+}//show-md-and-up
+
+.show-lg-and-up {
 	@include breakpoint($lg) {
-		display: initial;
+		display: block!important;
 	}//breakpoint($lg)
+}//show-lg-and-up
+
+
+.show-sm-only {
+	@include breakpoint($sm $md) {
+		display: block!important
+	}//breakpoint($sm $md)
 }
 
-.display-none { display: none; }
-.display-initial { display: initial }
+.show-md-only {
+	@include breakpoint($md $lg) {
+		display: block!important
+	}//breakpoint($md $lg)
+}
+
+.hide-sm-and-down {
+	@include breakpoint(max-width $max-sm) {
+		display: none!important;
+	}//breakpoint(max-width $max-sm)
+}//hide-sm-and-down
+
+.hide-md-and-down {
+	@include breakpoint(max-width $max-md) {
+		display: none!important;
+	}//breakpoint(max-width $max-md)
+}//hide-md-and-down 
+
+.hide-lg-and-down {
+	@include breakpoint(max-width $max-lg) {
+		
+	}//breakpoint(max-width $max-lg)
+}//hide-lg-and-down 
+
+
+// Center text on mobile
+.center-sm-only {
+	@include breakpoint(max-width $max-sm) {
+		text-align: center;
+	}
+}
+
+.hide-all { display: none!important; }
+.show-all { display: initial!important; }
 
 /********************
 	White Space
