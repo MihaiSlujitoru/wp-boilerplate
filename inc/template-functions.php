@@ -1,7 +1,7 @@
 <?php
 
 function my_assets() {
-    wp_enqueue_style('custom-css', get_stylesheet_directory_uri() . '/css/style.css', array(), null, all );
+    wp_enqueue_style('custom-css', get_template_directory_uri() . '/css/style.css', array(), null, all );
     wp_enqueue_style('theme-css', bloginfo('stylesheet_url') , array(), null, all );
     
     //wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array() );
@@ -11,7 +11,7 @@ function my_assets() {
 	//wp_enqueue_script( 'jquery-modal', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js' , array('jquery'), false, true );
 
 
-	wp_enqueue_script( 'main-js', get_stylesheet_directory_uri()."/js/main.js",  array('jquery'), false, true );
+	wp_enqueue_script( 'main-js', get_template_directory_uri()."/js/main.js",  array('jquery'), false, true );
 }
 add_action( 'wp_enqueue_scripts', 'my_assets' );
 
@@ -202,3 +202,21 @@ add_filter("get_archives_link", "theme_get_archives_link");
 // endif;
 
 
+
+
+
+/*****************
+    WPBakery - Visual Composer
+******************/
+// Remove “Edit with Visual Composer” from WordPress Admin Bar
+function vc_remove_wp_admin_bar_button() {
+    remove_action( 'admin_bar_menu', array( vc_frontend_editor(), 'adminBarEditLink' ), 1000 );
+}
+add_action( 'vc_after_init', 'vc_remove_wp_admin_bar_button' );
+
+
+// Remove “Edit with WPBakery Page Builder” link
+function vc_remove_frontend_links() {
+    vc_disable_frontend();
+}
+add_action( 'vc_after_init', 'vc_remove_frontend_links' );
