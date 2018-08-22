@@ -8,31 +8,150 @@
 }
 
 /********************
-	Paddings
+	Section Paddings
 *********************/
 
 .padding-top-bottom {
 	padding-top: 25px;
 	padding-bottom: 25px;
 	@include breakpoint($sm) {
-		padding-top: 45px;
-		padding-bottom: 45px;		
+		padding-top: 50px;
+		padding-bottom: 50px;		
 	}//breakpoint($sm)
 }
 
 .padding-top {
 	padding-top: 25px;
 	@include breakpoint($sm) {
-		padding-top: 45px;
+		padding-top: 50px;
 	}
 }
 .padding-bottom {
 	padding-bottom: 25px;
 	@include breakpoint($sm) {
-		padding-bottom: 45px;
+		padding-bottom: 50px;
 	}
 }
 
+.padding-top-bottom-large {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	@include breakpoint($sm) {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}//breakpoint($sm)
+	@include breakpoint($md) {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}//breakpoint($md)
+}
+
+.padding-top-large {
+	padding-top: 20px;
+	@include breakpoint($sm) {
+		padding-top: 50px;
+	}//breakpoint($sm)
+	@include breakpoint($md) {
+		padding-top: 100px;
+	}//breakpoint($md)
+}
+
+.padding-bottom-large {
+	padding-bottom: 20px;
+	@include breakpoint($sm) {
+		padding-bottom: 50px;
+	}//breakpoint($sm)
+	@include breakpoint($md) {
+		padding-bottom: 100px;
+	}//breakpoint($md)
+}
+
+/********************
+	Section Margins
+*********************/
+
+.margin-top-bottom {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	@include breakpoint($sm) {
+		margin-top: 45px;
+		margin-bottom: 45px;		
+	}//breakpoint($sm)
+}
+
+.margin-top {
+	margin-top: 25px;
+	@include breakpoint($sm) {
+		margin-top: 45px;
+	}
+}
+.margin-bottom {
+	margin-bottom: 25px;
+	@include breakpoint($sm) {
+		margin-bottom: 45px;
+	}
+}
+
+.margin-top-bottom-large {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	@include breakpoint($sm) {
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}//breakpoint($sm)
+	@include breakpoint($md) {
+		margin-top: 100px;
+		margin-bottom: 100px;
+	}//breakpoint($md)
+}
+
+.margin-top-large {
+	margin-top: 20px;
+	@include breakpoint($sm) {
+		margin-top: 50px;
+	}//breakpoint($sm)
+	@include breakpoint($md) {
+		margin-top: 100px;
+	}//breakpoint($md)
+}
+
+.margin-bottom-large {
+	margin-bottom: 20px;
+	@include breakpoint($sm) {
+		margin-bottom: 50px;
+	}//breakpoint($sm)
+	@include breakpoint($md) {
+		margin-bottom: 100px;
+	}//breakpoint($md)
+}
+
+/********************
+	Paddings
+*********************/
+.padding-top-auto {
+	padding-top: auto;
+}
+
+.padding-bottom-0 {
+	padding-bottom: 0px;
+}
+
+.padding-bottom-5 {
+	padding-bottom: 5px;
+}
+
+.padding-bottom-10 {
+	padding-bottom: 10px;
+}
+
+
+.padding-bottom-15 {
+	padding-bottom: 15px;
+}
+
+.padding-bottom-20 {
+	padding-bottom: 20px;
+}
 /********************
 	Margins
 *********************/
@@ -40,6 +159,31 @@
 .margin-top-auto {
 	margin-top: auto;
 }
+
+.margin-top-0 {
+	margin-top: 0px;
+}
+
+.margin-top-5 {
+	margin-top: 5px;
+}
+
+.margin-top-10 {
+	margin-top: 10px;
+}
+
+.margin-top-15 {
+	margin-top: 15px;
+}
+
+.margin-top-20 {
+	margin-top: 20px;
+}
+
+.margin-top-0 {
+	margin-top: 0px;
+}
+
 
 .margin-bottom-0 {
 	margin-bottom: 0px;
@@ -52,7 +196,6 @@
 .margin-bottom-10 {
 	margin-bottom: 10px;
 }
-
 
 .margin-bottom-15 {
 	margin-bottom: 15px;
@@ -87,6 +230,60 @@
 .text-uppercase {text-transform: uppercase};
 .text-extra-bold { font-weight: 900; }
 .text-underline {text-decoration: underline;}
+
+.text-center-sm-up {
+	@include breakpoint($sm) {
+		text-align: center;
+	}//breakpoint($sm)
+}
+
+.text-right-sm-up {
+	@include breakpoint($sm) {
+		text-align: right;
+	}//breakpoint($sm)
+}
+
+.text-left-sm-up {
+	@include breakpoint($sm) {
+		text-align: left;
+	}//breakpoint($sm)
+}
+
+.text-center-md-up {
+	@include breakpoint($md) {
+		text-align: center;
+	}//breakpoint($md)
+}
+
+.text-right-md-up {
+	@include breakpoint($md) {
+		text-align: right;
+	}//breakpoint($md)
+}
+
+.text-left-md-up {
+	@include breakpoint($md) {
+		text-align: left;
+	}//breakpoint($md)
+}
+
+.text-center-lg-up {
+	@include breakpoint($lg) {
+		text-align: center;
+	}//breakpoint($lg)
+}
+
+.text-right-lg-up {
+	@include breakpoint($lg) {
+		text-align: right;
+	}//breakpoint($lg)
+}
+
+.text-left-lg-up {
+	@include breakpoint($lg) {
+		text-align: left;
+	}//breakpoint($lg)
+}
 
 /*********************
   Media Query Classes
@@ -195,7 +392,6 @@
 }
 
 
-
 /*****************************
 	Background
 ******************************/
@@ -231,30 +427,16 @@
 
 .swap-md,
 .inverse-md {
-	>.wpb_column:nth-child(odd) {
-		@include breakpoint($md) {
-			order: 2!important;
-		}//breakpoint($md)
-	}
-
-	>.wpb_column:nth-child(even) {
-		@include breakpoint($md) {
-			order: 1!important;
-		}//breakpoint($md)
-	}
+	@include breakpoint($md) {
+		display: flex;
+		flex-direction: row-reverse;
+	}//breakpoint($md)
 }
 
 .swap-sm,
 .inverse-sm {
-	>.wpb_column:nth-child(odd) {
-		@include breakpoint($sm) {
-			order: 2!important;
-		}//breakpoint($sm)
-	}
-
-	>.wpb_column:nth-child(even) {
-		@include breakpoint($sm) {
-			order: 1!important;
-		}//breakpoint($sm)
-	}
+	@include breakpoint($sm) {
+		display: flex;
+		flex-direction: row-reverse;
+	}//breakpoint($md)
 }

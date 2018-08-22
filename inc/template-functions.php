@@ -1,7 +1,7 @@
 <?php
 
 function my_assets() {
-    wp_enqueue_style('custom-css', get_template_directory_uri() . '/css/style.css', array(), null, all );
+    wp_enqueue_style('theme-custom-css', get_template_directory_uri() . '/assets/css/style.css', array(), null, all );
     wp_enqueue_style('theme-css', bloginfo('stylesheet_url') , array(), null, all );
     
     //wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array() );
@@ -10,8 +10,7 @@ function my_assets() {
 	//wp_enqueue_script( 'slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array( 'jquery' ), false, true );
 	//wp_enqueue_script( 'jquery-modal', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js' , array('jquery'), false, true );
 
-
-	wp_enqueue_script( 'main-js', get_template_directory_uri()."/js/main.js",  array('jquery'), false, true );
+	wp_enqueue_script( 'main-js', get_template_directory_uri()."/assets/js/main.js",  array('jquery'), false, true );
 }
 add_action( 'wp_enqueue_scripts', 'my_assets' );
 
@@ -171,7 +170,6 @@ function theme_get_archives_link ( $link_html ) {
     }
 
     if ($current_url == $url[1]) {
-        echo "MADE IT";
         $link_html = str_replace("<li>", "<li class='current-cat'>", $link_html);
     }
       return $link_html;
@@ -200,9 +198,6 @@ add_filter("get_archives_link", "theme_get_archives_link");
 // 	dynamic_sidebar( 'add-id' );
 // 	echo "</div>";
 // endif;
-
-
-
 
 
 /*****************
