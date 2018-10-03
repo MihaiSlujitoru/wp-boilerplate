@@ -96,5 +96,5 @@ wp-content/mysql.sql
 .idea
 
 # custom themes and plugins
-!/wp-content/themes/bd
-!/wp-content/plugins/bd-google-maps
+!wp-content/themes/themefolder
+!wp-content/plugins/

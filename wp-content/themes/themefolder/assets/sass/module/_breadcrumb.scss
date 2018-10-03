@@ -1,0 +1,14 @@
+/*Yoast SEO Breadcrumbs*/
+#breadcrumbs {
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+
+    a {
+        //Style a tag here
+        
+
+        &.active {  }        
+        &:hover { }               
+    }
+}//breadcrumbs
