@@ -97,4 +97,4 @@ wp-content/mysql.sql
 
 # custom themes and plugins
 !wp-content/themes/themefolder
-!wp-content/plugins/*
+!wp-content/plugins/pluginfolder
