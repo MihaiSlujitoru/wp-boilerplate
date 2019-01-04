@@ -1,61 +1,128 @@
-// menu toggle - OPEN CLOSE ON TABLET AND MOBILE
-// Change the styles to match the design!
-// .menu-toggle {
-// 	width: 45px;
-// 	height: 45px;
-// 	margin:0;
-// 	padding: 15px 0;
-// 	background-color:$white;
-// 	position:relative;
-// 	display: block;
-// 	float: right;
-// 	cursor: pointer;
-// 	@include breakpoint($md) {
-// 		display: none;
-// 	}//breakpoint($md)
-// 	.bar {
-// 		display: block;
-// 		background-color:$darker-blue;
-// 		width: 17px;
-// 		height: 3px;
-// 		margin: 0 auto 4px;
-// 		@include transition();
-// 		&.bar-3{
-// 			margin-bottom: 0;
-// 		}//bar-3
-// 	}//bar
+#masthead nav {
+	background-color:$light-grey;
+	// position:relative;
+	.hamburger {
+		background-color: $white;
+		@include breakpoint($lg) {
+			display: none;
+		}//breakpoint($lg)
+	}
 
-// 	&:hover,
-// 	&:focus{
-// 		.bar-1{
-// 			transform: translateY(-2px);
-// 			-webkit-transform: translateY(-2px);
-// 			-moz-transform: translateY(-2px);				
-// 		}//bar-1
+	#navigation {
+		display: block!important;
+		@include breakpoint(max-width $max-lg) {
+			display: none!important;
+			position:absolute;
+			top: 100%;
+			right:0;
+			width:100%;			
+		}//breakpoint(max-width $max-lg)
+		ul {
+			margin:0;
+			padding:0;
+			list-style: none;
+			background-color:$light-grey;
+			text-align: center;	
+			li {
+				position: relative;
+				display: block;
+				text-transform: uppercase;
+				margin:0; 
+				padding: 0;
 
-// 		.bar-3{
-// 			transform: translateY(2px);
-// 			-webkit-transform: translateY(2px);
-// 			-moz-transform: translateY(2px);				
-// 		}//bar-3
-// 	}//hover,focus
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				color:$dark-blue;
+				font-weight: bold;
+				
+				@include fontsize(16, 26)
+				@include breakpoint($lg) {
+					display: inline-block;
+				}//breakpoint($lg)
 
-// 	&.is-active{
-// 		.bar-1{
-// 			transform: translateY(7px) translateX(0) rotate(45deg);
-// 			-webkit-transform: translateY(7px) translateX(0) rotate(45deg);
-// 			-moz-transform: translateY(7px) translateX(0) rotate(45deg);				
-// 		}//bar-1
+				@include breakpoint($lg) {
+					&::after {
+						position:absolute;
+						bottom:0;
+						left:0;
+						right:0;
+						content: '';
+						height:6px;
+						width:100%;
+						display: block;
+						background-color:transparent;
+						opacity: 0;
+						border-radius:10px 10px 0 0;
+						@include transition();
+					}									
+				}//breakpoint($lg)		
+				
+				&.current_page_parent,
+				&.current_page_item {
+					@include breakpoint($lg) {
+						&::after {
+							opacity: 1;
+							background-color:$orange;
+						}						
+					}//breakpoint($lg)					
+				}
 
-// 		.bar-2{
-// 			opacity: 0;				
-// 		}//bar-2
+				&:hover {
+					color:$orange;
+				}
 
-// 		.bar-3{
-// 			transform: translateY(-7px) translateX(0) rotate(-45deg);
-// 			-webkit-transform: translateY(-7px) translateX(0) rotate(-45deg);
-// 			-moz-transform: translateY(-7px) translateX(0) rotate(-45deg);				
-// 		}//bar-3
-// 	}//active
-// }//menu-toggle
+				a {
+					display: block;
+					padding:10px 20px;
+					color:inherit;
+					border-bottom:1px solid $light-blue;
+					span.sub-menu-toggle {
+						display: inline-block;
+						padding-left: 12px;
+					}
 
+					@include breakpoint($lg) {
+						border-bottom: 0;
+						padding:40px 24px 39px;
+					}//breakpoint($lg)
+				}//a
+			}//li
+			
+			li.menu-item-has-children:hover > ul{
+				display: block;
+			}
+
+			ul {
+				display: none;
+				background-color: $dark-blue;
+				padding:20px;
+  				@include breakpoint($lg) {
+					position:absolute;
+					top: 100%;
+					left:50%;
+					min-width:310px;
+	  				transform: perspective(1px) translateX(-50%);		  						
+  				}//breakpoint($lg)	
+				li {
+					display: block;
+					width:100%;
+					@include fontsize(14, 17);
+					margin-bottom: 10px;
+					border:2px solid $blue;
+					white-space: nowrap;
+					color:$white;
+					@include transition();
+					&::last-child {margin-bottom: 0;}
+					&::after{ display: none;}
+
+					&.current_page_item,
+					&:hover { background-color:$blue; color:$white; }
+					a {
+						padding: 10px 20px;
+						display: block;
+					}
+				}
+			}//ul
+		}//ul
+	}//#navigation
+}//nav

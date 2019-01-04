@@ -1,15 +1,17 @@
 <header id="masthead" class="site-header" role="banner">
-	<div class="lower-menu">
-		<a class="site-branding" href="<?php echo get_site_url('/');?>"></a>
+	<a class="site-branding" href="<?php echo get_site_url('/');?>">
+		<img src="<?php echo get_stylesheet_directory_uri();?>/assets/img/logo.png" alt="">
+	</a>
 
-		<div class="menu-toggle">
-			<div class="bar bar-1"></div>
-			<div class="bar bar-2"></div>
-			<div class="bar bar-3"></div>
-		</div>
+	<nav role="navigation">
+		<button class="hamburger hamburger--slider" type="button" aria-label="Menu" aria-controls="navigation" aria-expanded="false">
+			<span class="hamburger-box">
+				<span class="hamburger-inner"></span>
+			</span>
+		</button><!--hamburger-->
 
-		<nav id="site-navigation-desktop" class="desktop-nav" role="navigation">
-			<?php wp_nav_menu( array( 'theme_location' => 'master_menu', 'container'=> '', 'menu_id' => 'master-menu'  ) ); ?>
-		</nav>
-    </div><!--lower-menu-->
+	  	<div id="navigation">
+			<?php wp_nav_menu( array( 'theme_location' => 'master_menu', 'container'=> '', 'menu_id' => '') ); ?>
+	  	</div><!--#navigation-->
+	</nav><!--nav-->
 </header>
