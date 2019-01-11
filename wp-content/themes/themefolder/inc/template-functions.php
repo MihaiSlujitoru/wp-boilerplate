@@ -1,17 +1,23 @@
-<?php
+ <?php
 
 function my_assets() {
     // wp_enqueue_style( 'js_composer_front' );
     // wp_enqueue_style( 'js_composer_custom_css' );
 
-    wp_enqueue_style('theme-custom', get_template_directory_uri() . '/assets/css/style.css', array(), null, all );
-    wp_enqueue_style('theme', get_template_directory_uri() . '/style.css' , array(), null, all );
+    wp_enqueue_style('theme-custom', get_template_directory_uri() . '/assets/css/style.css', array(), null, 'all' );
+    wp_enqueue_style('theme', get_template_directory_uri() . '/style.css' , array(), null, 'all' );
     
-    //wp_enqueue_style('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array() );
 
-	//wp_enqueue_style('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array() );
+	//wp_enqueue_style('slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css', array(), 'all' );
+
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) { 
+        wp_enqueue_script( 'comment-reply' ); 
+    }
+
 	//wp_enqueue_script( 'slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array( 'jquery' ), false, true );
 	//wp_enqueue_script( 'jquery-modal', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js' , array('jquery'), false, true );
+
+    wp_enqueue_script( 'wpb_composer_front_js' );
 
 	wp_enqueue_script( 'main', get_template_directory_uri()."/assets/js/main.js",  array('jquery'), false, true );
 }
@@ -206,55 +212,54 @@ add_filter("get_archives_link", "theme_get_archives_link");
     Pagination
 ******************/
 
-// function pagination($pages = '', $range = 2 ) {  
-//     $showitems = ($range * 2)+1;  
 
-//     global $paged;
-//     if(empty($paged)) $paged = 1;
+function pagination($pages = '', $range = 2 ) {  
+    $showitems = ($range * 2)+1;  
+    global $paged;
+    if(empty($paged)) $paged = 1;
+    if($pages == '') {
+        global $wp_query;
+        $pages = $wp_query->max_num_pages;
+        if(!$pages) {
+            $pages = 1;
+        }
+    }   
+    $html = "";
+    if(1 != $pages) {
+        $html .= "<nav class='wrap-pagination' role='navigation' aria-label='Pagination Navigation'>";
+        $html .= "<h2 class='sr-text'>Posts Pagination</h2>";
+        $html .= "<ul class='pagination'>";
+            if($paged > 1 && $showitems < $pages){
+                $html .= "<li class='pagination-previous'>";
+                $html .= "<a href='".get_pagenum_link($paged - 1)."' aria-label='Previous Page' >";
+                $html .= "<span aria-hidden='true' class='icon'><i class='fas fa-chevron-left' aria-hidden='true'></i></span>";
+                $html .= "<span class='sr-text'>Previous Page</span>";
+                $html .= "</a>";
+                $html .= "</li>"; 
+            } 
+            for ($i=1; $i <= $pages; $i++) {
+                if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
+                    if($paged == $i) {
+                        $html .= "<li class='page-active'><span  aria-label='Current Page, Page ${i}' aria-current='true' >${i}</span></li>";
+                    } else {
+                        $html .= "<li class='page-link'><a href='".get_pagenum_link($i)."' aria-label='Page ${i}'>${i}</a></li>";    
+                    }
+                }
+            }
+            if ($paged < $pages && $showitems < $pages) {
+                $html .= "<li  class='pagination-next'>";
+                $html .= "<a href='".get_pagenum_link($paged + 1)."' aria-label='Next Page'>";
+                $html .= "<span aria-hidden='true' class='icon'><i class='fas fa-chevron-right' aria-hidden='true'></i></span>";
+                $html .= "<span class='sr-text'>Next Page</span>";
+                $html .= "</a>";
+                $html .= "</li>";
+            }
+        $html .= "</ul>";
+        $html .= "</nav>\n";
+        return $html;
+    }
+}
 
-//     if($pages == '') {
-//         global $wp_query;
-//         $pages = $wp_query->max_num_pages;
-//         if(!$pages) {
-//             $pages = 1;
-//         }
-//     }   
-
-//     $html = "";
-//     if(1 != $pages) {
-//         $html .= "<nav class='wrap-pagination' role='navigation' aria-label='Pagination Navigation'>";
-//         $html .= "<h2 class='sr-text'>Posts Pagination</h2>";
-//         $html .= "<ul class='pagination'>";
-//             if($paged > 1 && $showitems < $pages){
-//                 $html .= "<li class='pagination-previous'>";
-//                 $html .= "<a href='".get_pagenum_link($paged - 1)."' aria-label='Previous Page' >";
-//                 $html .= "<span aria-hidden='true' class='icon'><img src='".get_stylesheet_directory_uri()."/assets/img/left-angle-white.png'/></span>";
-//                 $html .= "<span class='sr-text'>Previous Page</span>";
-//                 $html .= "</a>";
-//                 $html .= "</li>"; 
-//             } 
-//             for ($i=1; $i <= $pages; $i++) {
-//                 if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
-//                     if($paged == $i) {
-//                         $html .= "<li class='page-active'><span  aria-label='Current Page, Page ${i}' aria-current='true' >${i}</span></li>";
-//                     } else {
-//                         $html .= "<li class='page-link'><a href='".get_pagenum_link($i)."' aria-label='Page ${i}'>${i}</a></li>";    
-//                     }
-//                 }
-//             }
-//             if ($paged < $pages && $showitems < $pages) {
-//                 $html .= "<li  class='pagination-next'>";
-//                 $html .= "<a href='".get_pagenum_link($paged + 1)."' aria-label='Next Page'>";
-//                 $html .= "<span aria-hidden='true' class='icon'><img src='".get_stylesheet_directory_uri()."/assets/img/right-angle-white.png'/></span>";
-//                 $html .= "<span class='sr-text'>Next Page</span>";
-//                 $html .= "</a>";
-//                 $html .= "</li>";
-//             }
-//         $html .= "</ul>";
-//         $html .= "</nav>\n";
-//         return $html;
-//     }
-// }
 
 /*****************
     WPBakery - Visual Composer

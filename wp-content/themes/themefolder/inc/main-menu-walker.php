@@ -2,8 +2,7 @@
 /********************
 Secondary Menu Walker
 *********************/
-class Main_Menu_Walker extends Walker_Nav_Menu {
- 
+class Main_Menu_Walker extends Walker_Nav_Menu { 
     /**
      * Starts the list before the elements are added.
      *
@@ -73,11 +72,9 @@ class Main_Menu_Walker extends Walker_Nav_Menu {
         $item_output .= $args->before;
         $item_output .= "<a" . $attributes . ">";
         $item_output .= $args->link_before .apply_filters( 'the_title', $item->title, $item->ID );
-
-        // if($args->walker->has_children) {
-        //     $item_output .= "<span class='sub-menu-toggle sub-menu-toggle-${depth}'><i class='icon-down-open'></i></span>";
-        // }              
-         
+        if($args->walker->has_children) {
+            $item_output .= "<span class='sub-menu-toggle sub-menu-toggle-${depth}'><i class='fas fa-angle-down' aria-hidden title='Drop down'></i></span>";
+        }              
         $item_output .= '</a>';
     
         $item_output .= $args->after;
