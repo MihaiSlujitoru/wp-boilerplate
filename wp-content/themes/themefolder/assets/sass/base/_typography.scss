@@ -1,25 +1,21 @@
 h1,h2,h3,h4,h5,h6,
 .h1,.h2,.h3,.h4,.h5,.h6,{
-	margin-bottom: 30px;
+	margin-bottom: 35px;
+	color:$tertiary-color;
+	font-weight: 700;
 }//h1,h2,h3,h4,h5,h6
 
 h1,
 .h1 {	
-	@include fontsize(24,26);
-	@include breakpoint($sm) {
-		@include fontsize(28, 30);	
-	}//breakpoint($sm)
+	@include fontsize(28, 38);	
 	@include breakpoint($md) {
-		@include fontsize(56,56);
+		@include fontsize(56,73);
 	}//breakpoint($md)
 }//h1
 
 h2,
 .h2 {
-	@include fontsize(28, 30);
-	@include breakpoint($sm) {
-		@include fontsize(32, 34);
-	}//breakpoint($sm)
+	@include fontsize(28, 38);
 	@include breakpoint($md) {
 		@include fontsize(40, 40);
 	}//breakpoint($md)	
@@ -27,55 +23,51 @@ h2,
 
 h3,
 .h3 {
-	@include fontsize(24,26);
+	@include fontsize(24,34);
 	@include breakpoint($sm) {
-		@include fontsize(28,40);
+		@include fontsize(28,38);
 	}//breakpoint($sm)
 }//h3
 
 h4,
 .h4 {
-	@include fontsize(24,26);
+	@include fontsize(20,30);
 	@include breakpoint($sm) {
-		@include fontsize(28,40);
+		@include fontsize(24,34);
 	}//breakpoint($sm)
 }//h4
 
 h5,
 .h5 {
-	@include fontsize(18, 30);
+	@include fontsize(22,30);
 }//h5
 
 h6,
 .h6 {
-	@include fontsize(18,20);
+	@include fontsize(18, 28);
 }//h6
 
 p,
 .p {
-	//color: ;
-	@include fontsize(16, 24);
-	margin-bottom: 30px;
-	&:last-child{
-		margin-bottom: 0;
-	}//last-child
-	
-	@include breakpoint($sm) {
-		@include fontsize(18, 30);
-	}//breakpoint($sm)
-
+	color: $grey ;
+	font-weight: 300;
+	@include fontsize(18, 28);
+	margin-bottom: 35px;
+	&:last-child{ margin-bottom: 0; }//last-child
 	small {
 		@include fontsize(12, 18);
 	}
+	&.lead {
+		@include fontsize(20, 30);
+		@include breakpoint($md) {
+			@include fontsize(24, 36);	
+		}//breakpoint($md)
+	}	
+	&.text-16 {
+		@include fontsize(16, 36);
+	}
 }//p
 
-
-p.lead {
-	@include fontsize(18, 30);
-	@include breakpoint($sm) {
-		@include fontsize(24, 30);	
-	}//breakpoint($sm)
-}
 
 a{
 	text-decoration:none;

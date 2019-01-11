@@ -6,10 +6,9 @@
 <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1">
 <!-- <meta name="format-detection" content="telephone=no"> -->
 
-<link rel="shortcut icon" href="<?php echo get_template_directory_uri() ?>/favicon.ico" type="image/x-icon">
-<link rel="icon" href="<?php echo get_template_directory_uri() ?>/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="<?php echo get_template_directory_uri() ?>/assets/img/favicon.ico" type="image/x-icon">
 
-<?php 
+<?php
 	wp_get_archives('type=monthly&format=link');
 	wp_enqueue_script("jquery");
 	wp_head();
@@ -17,4 +16,4 @@
 
 </head>
 <body <?php body_class(); ?>>
-<a href="#skip-to-content" id="skip" class="visually-hidden" tabindex="1">Skip to Content</a>
+<a href="#content" id="skip" class="sr-text" tabindex="1">Skip to Content</a>

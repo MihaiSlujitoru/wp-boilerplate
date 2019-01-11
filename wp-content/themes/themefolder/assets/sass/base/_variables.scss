@@ -2,16 +2,14 @@
 	Colors
 ************/
 
-$white: #ffffff;
+$white 					: #ffffff;
 
-// $grey	 			: #acc3d4;
-// $mud-blue 			: #2c4552;
-// $blue 				: #0e7cc0;
-// $dark-blue 			: #005288;
-// $darker-blue		: #033d67;
-// $green 				: #3a870d;
-// $dark-green			: #236000;
-$black: #000000;
+$brand-color			: #f25830;
+$accent-color			: #fa9d2e;
+$tertiary-color			: #4a7999;
+
+$grey 					: #2d373e;
+$black 					: #000000;
 
 /*****************
 	Breakpoints
@@ -26,3 +24,8 @@ $max-sm 	: 767px;
 $max-md 	: 991px;
 $max-lg 	: 1199px;
 $max-xl 	: 1439px;
+
+/*****************
+	Helpers
+******************/
+$default-letter-spacing 	: 1px;
