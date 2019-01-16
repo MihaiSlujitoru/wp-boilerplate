@@ -231,6 +231,8 @@ add_filter("get_archives_link", "theme_get_archives_link");
 /*****************
     Pagination
 ******************/
+
+
 function pagination($pages = '', $range = 2 ) {  
     $showitems = ($range * 2)+1;  
     global $paged;

@@ -5,8 +5,8 @@
 	line-height: ($line / 16) + rem;
 }
 
-@mixin basicSans($style: normal, $weight: normal){
-	font-family: "basic-sans",sans-serif;
+@mixin soleil($style: normal, $weight: normal){
+	font-family: "soleil", sans-serif;
 	font-weight: $weight;
 	font-style: $style;
 }
