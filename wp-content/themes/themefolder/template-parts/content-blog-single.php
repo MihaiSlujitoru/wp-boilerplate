@@ -10,7 +10,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class('blog-single-posts'); ?> role='article'>
 	<header class="entry-header">
 		<?php 
-			echo "<p class='meta-entry'><time class='entry-date published updated' datetime='". get_the_date('F jS, Y') ."'>". get_the_date('F d, Y') ."</time>" . "</p>";		
+			echo "<p class='meta-entry'><time class='entry-date' datetime='". get_the_date('F jS, Y') ."'>". get_the_date('F d, Y') ."</time>" . "</p>";		
 			the_title( '<h1 class="entry-title h4">', '</h1>' );
 		?>		
 	</header><!-- .entry-header -->

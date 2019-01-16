@@ -51,6 +51,17 @@ function excerpt($limit) {
 }
 
 /*****************
+    Load Template from plugins
+******************/
+function load_template_part($template_name, $part_name=null) {
+    ob_start();
+    get_template_part($template_name, $part_name);
+    $var = ob_get_contents();
+    ob_end_clean();
+    return $var;
+}
+
+/*****************
     Add Search Support
 ******************/
 
@@ -68,6 +79,15 @@ function excerpt($limit) {
 //     }
 //     return $items; 
 // }
+
+/*<div class='menu-search'>
+    <button class='search-toggle' type='button' aria-label="Open search form" aria-controls="search" aria-expanded="false" ><span class='sr-text'>Open search form</span></button>
+    <form role='search' method='get' class='search-form' id='search' action='<?php echo home_url( '/' ) ?>'>
+        <span class='sr-text'><?php echo _x( 'Search for:', 'label' ) ?></span>
+        <input type='search' class='search-field' placeholder='<?php echo esc_attr_x( 'Search...', 'placeholder' ) ?>' value='<?php get_search_query(); ?>' name='s' title='<?php echo esc_attr_x( 'Search...', 'label' ) ?>' />
+        <button type='submit' class='search-submit'><span class='sr-text'>Search</span></button>
+    </form>
+</div>*/
 
 
 /*****************

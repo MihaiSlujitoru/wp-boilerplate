@@ -65,17 +65,20 @@ class Main_Menu_Walker extends Walker_Nav_Menu {
         $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
         $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
         $attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
-        
 
+        if($args->walker->has_children) {
+            $attributes .= ' aria-haspopup="true" aria-expanded="false" ';
+        }
+        
         // Build HTML output and pass through the proper filter.
         $item_output = '';
         $item_output .= $args->before;
         $item_output .= "<a" . $attributes . ">";
-        $item_output .= $args->link_before .apply_filters( 'the_title', $item->title, $item->ID );
-        if($args->walker->has_children) {
-            $item_output .= "<span class='sub-menu-toggle sub-menu-toggle-${depth}'><i class='fas fa-angle-down' aria-hidden title='Drop down'></i></span>";
-        }              
+        $item_output .= $args->link_before .apply_filters( 'the_title', $item->title, $item->ID );           
         $item_output .= '</a>';
+        if($args->walker->has_children) {
+            $item_output .= "<button aria-expanded='false' class='sub-menu-toggle sub-menu-toggle-${depth}'><span class='sr-text'>Display sub menu for  '" . $args->link_before .apply_filters( 'the_title', $item->title, $item->ID )  . "'</span></button>";
+        }           
     
         $item_output .= $args->after;
 
