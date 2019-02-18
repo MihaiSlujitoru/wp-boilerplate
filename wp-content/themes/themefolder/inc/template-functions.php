@@ -246,35 +246,32 @@ function pagination($pages = '', $range = 2 ) {
     }   
     $html = "";
     if(1 != $pages) {
-        $html .= "<nav class='wrap-pagination' role='navigation' aria-label='Pagination Navigation'>";
-        $html .= "<h2 class='sr-text'>Posts Pagination</h2>";
-        $html .= "<ul class='pagination'>";
-            if($paged > 1 && $showitems < $pages){
-                $html .= "<li class='pagination-previous'>";
+        $html .= "<nav class='wrap-pagination' id='paginglabel' aria-label='Pagination Navigation'>";
+        $html .= "<ol class='pagination' aria-labelledby='paginglabel'>";
+            // /if($paged > 1 && $showitems < $pages){
+                $html .= "<li class='pagination-previous' " . ( (($paged >= 1 || $showitems < $pages) && $paged != 1 )  ? 'aria-disabled="false"' : ' aria-disabled="true" data-disabled="true" ' ) . ">";
                 $html .= "<a href='".get_pagenum_link($paged - 1)."' aria-label='Previous Page' >";
-                $html .= "<span aria-hidden='true' class='icon'><i class='fas fa-chevron-left' aria-hidden='true'></i></span>";
                 $html .= "<span class='sr-text'>Previous Page</span>";
                 $html .= "</a>";
                 $html .= "</li>"; 
-            } 
+            // }
             for ($i=1; $i <= $pages; $i++) {
                 if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
                     if($paged == $i) {
                         $html .= "<li class='page-active'><span  aria-label='Current Page, Page ${i}' aria-current='true' >${i}</span></li>";
                     } else {
-                        $html .= "<li class='page-link'><a href='".get_pagenum_link($i)."' aria-label='Page ${i}'>${i}</a></li>";    
+                        $html .= "<li class='page-link'><a href='".get_pagenum_link($i)."' aria-label='Go to Page ${i}'>${i}</a></li>";    
                     }
                 }
             }
-            if ($paged < $pages && $showitems < $pages) {
-                $html .= "<li  class='pagination-next'>";
+            // if ($paged < $pages && $showitems < $pages) {
+                $html .= "<li  class='pagination-next ${paged} ${pages} ${showitems}'  " . ((($paged <= $pages || $showitems <= $pages) && $paged != $pages  ) ? 'aria-disabled="false"' : ' aria-disabled="true" data-disabled="true" ' ) . ">";
                 $html .= "<a href='".get_pagenum_link($paged + 1)."' aria-label='Next Page'>";
-                $html .= "<span aria-hidden='true' class='icon'><i class='fas fa-chevron-right' aria-hidden='true'></i></span>";
                 $html .= "<span class='sr-text'>Next Page</span>";
                 $html .= "</a>";
                 $html .= "</li>";
-            }
-        $html .= "</ul>";
+            // }
+        $html .= "</ol>";
         $html .= "</nav>\n";
         return $html;
     }

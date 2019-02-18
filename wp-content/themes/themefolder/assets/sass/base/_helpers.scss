@@ -67,6 +67,40 @@
 }
 
 /********************
+	Section VC - Padding
+*********************/
+
+
+.vc_row-has-fill>.vc_column_container>.vc_column-inner
+.vc_row-has-fill+.vc_row.padding-top-bottom,
+.vc_row-has-fill+.vc_row-full-width+.vc_row.padding-top-bottom,
+.vc_row-has-fill.padding-top-bottom {
+	padding-top: 0;
+	padding-bottom: 35px;
+	@include breakpoint($sm) {
+		padding-top: 15px;
+		padding-bottom: 50px;		
+	}//breakpoint($sm)
+}
+
+
+
+.vc_row-has-fill+.vc_row.padding-top-bottom-large,
+.vc_row-has-fill+.vc_row-full-width+.vc_row.padding-top-bottom-large,
+.vc_row-has-fill.padding-top-bottom-large {
+	padding-top: 0;
+	padding-bottom: 35px;
+	@include breakpoint($sm) {
+		padding-top: 15px;
+		padding-bottom: 50px;
+	}//breakpoint($sm)
+	@include breakpoint($md) {
+		padding-top: 65px;
+		padding-bottom: 100px;
+	}//breakpoint($md)	
+}
+
+/********************
 	Section Margins
 *********************/
 
@@ -128,6 +162,26 @@
 /********************
 	Paddings
 *********************/
+/********************
+	Paddings
+*********************/
+
+.xs-padding-top-0,
+.xs-padding-top-0 .vc_column-inner {
+	@include breakpoint(max-width $max-sm) {
+		padding-top: 0px!important;	
+	}//breakpoint(max-width $max-sm)
+}
+
+.sm-padding-top-0,
+.sm-padding-top-0 .vc_column-inner {
+	@include breakpoint(max-width $max-md) {
+		padding-top: 0px!important;	
+	}//breakpoint(max-width $max-md)
+}
+
+
+
 .padding-top-auto {
 	padding-top: auto;
 }
