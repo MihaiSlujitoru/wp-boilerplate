@@ -97,4 +97,5 @@ wp-content/mysql.sql
 
 # custom themes and plugins
 !wp-content/themes/themefolder
-!wp-content/plugins/pluginfolder
+!wp-content/plugins/tcm-cpt
+!wp-content/plugins/tcm-vc
