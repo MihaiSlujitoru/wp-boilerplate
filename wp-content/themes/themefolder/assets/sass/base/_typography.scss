@@ -76,3 +76,27 @@ a{
 
 	}//hover
 }//a
+
+
+//UL, OL lists
+//In case you use Visual Composer otherwise take those classes out to be global.
+.wpb_content_element,
+.single-post-content {
+	ul,
+	ol {
+		margin-left: 18px;
+		padding-bottom: 30px;
+		li {
+			//color: ;
+			// @include fontsize(18, 28);
+			
+			margin-bottom: 30px;
+		    padding-left: 20px;
+		    position: relative;		
+
+			&:last-child{
+				margin-bottom: 0;
+			}//last-child	
+		}//li
+	}//ul,ol
+}

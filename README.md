@@ -1,3 +1,3 @@
 # wp-boilerplate
 
-Simple Boilerplate that I use to start a new custom WordPress Theme. 
+Simple Boilerplate to start a new custom WordPress Theme. 

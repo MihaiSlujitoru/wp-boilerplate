@@ -4,7 +4,8 @@
 
 $white 					: #ffffff;
 
-$brand-color			: #f25830;
+
+$orange					: #f25830;
 $accent-color			: #fa9d2e;
 $tertiary-color			: #4a7999;
 
@@ -15,17 +16,17 @@ $black 					: #000000;
 	Breakpoints
 ******************/
 
-$sm 		: 768px;
-$md 		: 992px;
-$lg 		: 1200px;
-$xl 		: 1440px;
+$sm 		: 48rem;
+$md 		: 62rem;
+$lg 		: 75rem;
+$xl 		: 87.5rem;
 
-$max-sm 	: 767px;
-$max-md 	: 991px;
-$max-lg 	: 1199px;
-$max-xl 	: 1439px;
+$max-sm 	: 47.9375rem;
+$max-md 	: 61.9375rem;
+$max-lg 	: 74.9375rem;
+$max-xl 	: 89.9375rem;
 
 /*****************
 	Helpers
 ******************/
-$default-letter-spacing 	: 1px;
+$default-letter-spacing 	: 1;

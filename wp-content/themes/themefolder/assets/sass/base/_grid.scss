@@ -1,152 +1,156 @@
 /*Add all grid options in here*/
 
-$gutter-width : 30px;
-$num-cols : 12;
+@import "../sass-flex-mixin/_flex";
+
+$grid-cols : 12 !default;
+$gutter-width : 30px !default;
+$max-width: 1440px !default;
+
+$gutter-compensation: ($gutter-width * .5 * -1);
+$half-gutter-width: ($gutter-width * .5);
+
+@mixin flexboxgrid-sass-col-common {
+	box-sizing: border-box;
+
+	// split @include flex(0, 0, auto) into individual props
+	@include flex-grow(0);
+	@include flex-shrink(0);
+
+	// we leave @include flex-basis(auto) out of common because
+	// in some spots we need it and some we dont
+	// more why here: https://github.com/kristoferjoseph/flexboxgrid/issues/126
+
+	padding-right: $half-gutter-width;
+	padding-left: $half-gutter-width;
+}
+
+@mixin col-loop($grid-cols, $name, $breakpoint ) {
+	$i: 1;
+	@while $i <= $grid-cols {
+		$perc: unquote((100 / ( $grid-cols / $i)) + "%");
+			&[class*="#{$name}"] {
+		      @include flex-grow(1);
+		      @include flex-basis(0);
+		      max-width: 100%;
+			}
+			&.#{$name}#{$i} {
+				@include flexboxgrid-sass-col-common;
+				@include flex-basis(100% / $grid-cols * $i);
+				max-width: 100% / $grid-cols * $i;
+			}
+
+			&.start-#{$name} {
+				@include justify-content(flex-start);
+				text-align: left;
+			}
+
+			&.center-#{$name} {
+				@include justify-content(center);
+				text-align: center;
+			}
+
+			&.end-#{$name} {
+				@include justify-content(flex-end);
+				text-align: right;
+			}
+
+			&.top-#{$name} {
+				@include align-items(flex-start);
+			}
+
+			&.middle-#{$name} {
+				@include align-items(center);
+			}
+
+			&.bottom-#{$name} {
+				@include align-items(flex-end);
+			}
+
+			&.around-#{$name} {
+				@include justify-content(space-around);
+			}
+
+			&.between-#{$name} {
+				@include justify-content(space-between);
+			}
+
+			&.first-#{$name} {
+				order: -1;
+			}
+
+			&.last-#{$name} {
+				order: 1;
+			}
+		$i: $i + 1;
+	}
+	$i: 1;
+	@while $i <= $grid-cols {
+		$perc: unquote((100 / ( $grid-cols / $i)) + "%");
+		&.offset-#{$name}#{$i} {
+			@include flexboxgrid-sass-col-common;
+			@if $i == 0 {
+				margin-left: 0;
+			} @else {
+				margin-left: 100% / $grid-cols * $i;
+			}
+		}
+		$i: $i + 1;
+	}	
+}
+
+@mixin col-generator($grid-cols: 12, $name: null, $breakpoint: null ) {
+	@if($breakpoint) {
+		@include breakpoint($breakpoint) {
+			@include col-loop($grid-cols, $name, $breakpoint);
+		}
+	} @else {
+		@include col-loop($grid-cols, $name, $breakpoint);
+	}
+}
+
 
 .wrap {
 	margin: 0 auto;
-	max-width: 1440px;
+	max-width: $max-width;
 	width: 100%;
-	padding-left: 15px;
-	padding-right: 15px
+
+	padding-left: $half-gutter-width;
+	padding-right: $half-gutter-width;
+
 }
 
 .wrap .row {
-	margin-left: (-1 * $gutter-width / 2);
-	margin-right: (-1 * $gutter-width / 2);
+	margin-left: $gutter-compensation;
+	margin-right: $gutter-compensation;
 }
 
 .row {
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 35px;
-	@include clearfix();
-	&.no-margin,
-	&.margin-bottom-0 {
-		margin-bottom:0;
+	@include flexbox();
+	@include flex(0, 1, auto);
+	@include flex-direction(row);
+	@include flex-wrap(wrap);
+	margin-right: $gutter-compensation;
+	margin-left: $gutter-compensation;
+
+	&.reverse {
+  		@include flex-direction(row-reverse);		
 	}
+
 	.col {
 		float: left;
-		padding: 0 $gutter-width / 2;
+		padding-left: $half-gutter-width;
+		padding-right: $half-gutter-width;
 		min-height: 1px;
-		&.col-pad-20 {
-			padding: 0 20px;
+
+		&.reverse {
+			@include flex-direction(row-reverse);
 		}
 
-		&[class*="push-"],
-		&[class*="pull-"] {
-			position: relative;
-		}
+		@include col-generator($grid-cols, 'xs' );
+		@include col-generator($grid-cols, 'sm', $sm );
+		@include col-generator($grid-cols, 'md', $md );
+		@include col-generator($grid-cols, 'lg', $lg );
+		@include col-generator($grid-cols, 'xl', $xl );
 
-		$i: 1;
-		@while $i <= $num-cols {
-			$perc: unquote((100 / ($num-cols / $i)) + "%");
-				&.xs#{$i} {
-					width: $perc;
-					margin-left: auto;
-					left: auto;
-					right: auto;
-				}
-			$i: $i + 1;
-		}
-		$i: 1;
-		@while $i <= $num-cols {
-			$perc: unquote((100 / ($num-cols / $i)) + "%");
-			&.offset-xs#{$i} {
-				margin-left: $perc;
-			}
-			&.pull-xs#{$i} {
-				right: $perc;
-			}
-			&.push-xs#{$i} {
-				left: $perc;
-			}
-			$i: $i + 1;
-		}
-
-		@include breakpoint($sm) {
-			$i: 1;
-			@while $i <= $num-cols {
-				$perc: unquote((100 / ($num-cols / $i)) + "%");
-					&.sm#{$i} {
-						width: $perc;
-						margin-left: auto;
-						left: auto;
-						right: auto;
-					}
-				$i: $i + 1
-			}
-
-			$i: 1;
-			@while $i <= $num-cols {
-				$perc: unquote((100 / ($num-cols / $i)) + "%");
-					&.offset-sm#{$i} {
-						margin-left: $perc;
-					}
-					&.pull-sm#{$i} {
-						right: $perc;
-					}
-					&.push-sm#{$i} {
-						left: $perc;
-					}
-				$i: $i + 1;
-			}
-		}//breakpoint($sm)
-
-
-		@include breakpoint($md) {
-			$i: 1;
-			@while $i <= $num-cols {
-				$perc: unquote((100 / ($num-cols / $i)) + "%");
-				&.md#{$i} {
-					width: $perc;
-					margin-left: auto;
-					left: auto;
-					right: auto;
-				}
-				$i: $i + 1;
-			}
-			$i: 1;
-			@while $i <= $num-cols {
-				$perc: unquote((100 / ($num-cols / $i)) + "%");
-					&.offset-md#{$i} {
-						margin-left: $perc;
-					}
-					&.pull-md#{$i} {
-						right: $perc;
-					}
-					&.push-md#{$i} {
-						left: $perc;
-					}
-				$i: $i + 1;
-			}	
-		}//breakpoint($md)
-		@include breakpoint($lg) {
-			$i: 1;
-			@while $i <= $num-cols {
-				$perc: unquote((100 / ($num-cols / $i)) + "%");
-				&.lg#{$i} {
-					width: $perc;
-					margin-left: auto;
-					left: auto;
-					right: auto;
-				}
-				$i: $i + 1;
-			}
-			$i: 1;
-			@while $i <= $num-cols {
-				$perc: unquote((100 / ($num-cols / $i)) + "%");
-					&.offset-lg#{$i} {
-						margin-left: $perc;
-					}
-					&.pull-lg#{$i} {
-						right: $perc;
-					}
-					&.push-lg#{$i} {
-						left: $perc;
-					}
-				$i: $i + 1;
-			}	
-		}//breakpoint($md)		
 	}//col
 }//row

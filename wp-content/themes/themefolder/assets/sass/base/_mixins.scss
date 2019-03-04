@@ -1,8 +1,8 @@
 @mixin fontsize($size:16, $line: $size * 16){
 	font-size:   $size  + px;
-	line-height: $line + px;
+	line-height: $line;
 	font-size:   ($size / 16) + rem;
-	line-height: ($line / 16) + rem;
+	line-height: ($line / 16);
 }
 
 @mixin soleil($style: normal, $weight: normal){
@@ -24,4 +24,38 @@
 		display: table;
 		clear: both;
 	}
+}
+
+/***********
+	PX to REM
+************/
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@mixin rem($property, $values...) {
+	$max: length($values);
+	$pxValues: '';
+	$remValues: '';
+
+	@for $i from 1 through $max {
+		$value: strip-unit(nth($values, $i));
+		$pxValues: #{$pxValues + $value*16}px;
+
+		@if $i < $max {
+			$pxValues: #{$pxValues + " "};
+		}
+	} 
+
+	@for $i from 1 through $max {
+		$value: strip-unit(nth($values, $i));
+		$remValues: #{$remValues + $value}rem;
+
+		@if $i < $max {
+			$remValues: #{$remValues + " "};
+		}
+	} 
+
+	#{$property}: $pxValues; 
+	#{$property}: $remValues; 
 }
