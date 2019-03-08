@@ -286,20 +286,48 @@ a {
 .wpb_content_element ol,
 .single-post-content ul,
 .single-post-content ol {
-  margin-left: 18px;
-  padding-bottom: 30px; }
+  list-style-position: outside;
+  margin-bottom: 25px; }
   .wpb_content_element ul li,
   .wpb_content_element ol li,
   .single-post-content ul li,
   .single-post-content ol li {
-    margin-bottom: 30px;
-    padding-left: 20px;
-    position: relative; }
+    font-size: 14px;
+    line-height: 24;
+    font-size: 0.875rem;
+    line-height: 1.5; }
+    @media (min-width: 48rem) {
+      .wpb_content_element ul li,
+      .wpb_content_element ol li,
+      .single-post-content ul li,
+      .single-post-content ol li {
+        font-size: 16px;
+        line-height: 28;
+        font-size: 1rem;
+        line-height: 1.75; } }
     .wpb_content_element ul li:last-child,
     .wpb_content_element ol li:last-child,
     .single-post-content ul li:last-child,
     .single-post-content ol li:last-child {
       margin-bottom: 0; }
+  .wpb_content_element ul ul, .wpb_content_element ul ol,
+  .wpb_content_element ol ul,
+  .wpb_content_element ol ol,
+  .single-post-content ul ul,
+  .single-post-content ul ol,
+  .single-post-content ol ul,
+  .single-post-content ol ol {
+    margin-bottom: 0; }
+
+.wpb_content_element ul,
+.single-post-content ul {
+  margin-left: 20px;
+  list-style-type: disc; }
+
+.wpb_content_element ol,
+.single-post-content ol {
+  margin-left: 20px;
+  list-style: decimal; }
 
 /*Add all grid options in here*/
 .wrap {

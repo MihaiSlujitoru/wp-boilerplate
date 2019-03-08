@@ -84,19 +84,30 @@ a{
 .single-post-content {
 	ul,
 	ol {
-		margin-left: 18px;
-		padding-bottom: 30px;
+		list-style-position: outside;
+		margin-bottom: 25px;
 		li {
-			//color: ;
-			// @include fontsize(18, 28);
-			
-			margin-bottom: 30px;
-		    padding-left: 20px;
-		    position: relative;		
+			@include fontsize(14, 24);
+			@include breakpoint($sm) {
+				@include fontsize(16, 28);
+			}//breakpoint($sm)
 
 			&:last-child{
 				margin-bottom: 0;
 			}//last-child	
 		}//li
+		ul,ol {
+			margin-bottom: 0;
+		}
 	}//ul,ol
+
+	ul {
+		margin-left: 20px;
+		list-style-type: disc;
+	}
+
+	ol {
+		margin-left: 20px;
+		list-style: decimal;
+	}
 }
